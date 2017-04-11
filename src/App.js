@@ -10,19 +10,19 @@ class App extends Component {
       model: null
     };
 
-    this.brandChanged = this.brandChanged.bind(this);
-    this.modelChanged = this.modelChanged.bind(this);
-    this.buttonClicked = this.buttonClicked.bind(this);
+    this.onBrandChanged = this.onBrandChanged.bind(this);
+    this.onModelChanged = this.onModelChanged.bind(this);
+    this.onButtonClick = this.onButtonClick.bind(this);
   }
 
-  knownBrand(brand) {
-    return this.brands().indexOf(brand) !== -1;
+  isKnownBrand(brand) {
+    return this.getBrands().indexOf(brand) !== -1;
   }
 
-  brandChanged(ev) {
+  onBrandChanged(ev) {
     const brand = ev.target.value;
 
-    if (this.knownBrand(brand)) {
+    if (this.isKnownBrand(brand)) {
       this.setState({
         brand,
         model: null
@@ -35,35 +35,35 @@ class App extends Component {
     }
   }
 
-  knownModel(model) {
-    return this.models().indexOf(model) !== -1;
+  isKnownModel(model) {
+    return this.getModels().indexOf(model) !== -1;
   }
 
-  modelChanged(ev) {
+  onModelChanged(ev) {
     const model = ev.target.value;
 
-    if (this.knownModel(model)) {
+    if (this.isKnownModel(model)) {
       this.setState({ model })
     } else {
       this.setState({ model: null })
     }
   }
 
-  brands() {
+  getBrands() {
     return Object.keys(this.props.data);
   }
 
-  models() {
+  getModels() {
     const { brand } = this.state;
     return brand !== null ? this.props.data[brand] : [];
   }
 
-  buttonClicked() {
+  onButtonClick() {
     const { brand, model} = this.state;
     alert(`${brand} ${model} riding...`);
   }
 
-  buttonDisabled() {
+  isButtonDisabled() {
     return (this.state.brand === null || this.state.model === null);
   }
 
@@ -71,19 +71,19 @@ class App extends Component {
     return (
         <div id={this.props.id}>
           <List name="Brand"
-                items={this.brands()}
+                items={this.getBrands()}
                 value={this.state.brand}
-                onChangeHandler={this.brandChanged}
+                onChangeHandler={this.onBrandChanged}
           />
 
           <List name="Model"
-                items={this.models()}
+                items={this.getModels()}
                 value={this.state.model}
-                onChangeHandler={this.modelChanged}
+                onChangeHandler={this.onModelChanged}
           />
 
-          <button onClick={this.buttonClicked}
-                  disabled={this.buttonDisabled()}>
+          <button onClick={this.onButtonClick}
+                  disabled={this.isButtonDisabled()}>
             ride
           </button>
         </div>
