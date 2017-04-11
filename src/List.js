@@ -17,7 +17,7 @@ class List extends Component {
     }
 
     return (
-        <select value={value} onChange={onChangeHandler}>
+        <select className="list" value={value} onChange={onChangeHandler}>
           {options}
         </select>);
   }

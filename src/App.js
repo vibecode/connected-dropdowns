@@ -60,7 +60,7 @@ class App extends Component {
 
   buttonClicked() {
     const { brand, model} = this.state;
-    console.log(`${brand} ${model} riding...`);
+    alert(`${brand} ${model} riding...`);
   }
 
   buttonDisabled() {
@@ -84,7 +84,7 @@ class App extends Component {
 
           <button onClick={this.buttonClicked}
                   disabled={this.buttonDisabled()}>
-            Ride
+            ride
           </button>
         </div>
     );
