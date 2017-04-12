@@ -32,7 +32,8 @@ button:focus {
   outline: none;
 }
 
-button:disabled {
+button:disabled,
+button:disabled:hover{
   background-color: #e5e5e5;
 }
 
