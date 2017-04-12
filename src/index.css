@@ -28,22 +28,18 @@ button {
   font-size: 16px;
 }
 
+button:focus {
+  outline: none;
+}
+
 button:disabled {
   background-color: #e5e5e5;
-}
-
-button:disabled:hover {
-  background-color: #e5e5e5;
-}
-
-button:active {
-  background-color: #450882;
 }
 
 button:hover {
   background-color: #aa69ff;
 }
 
-button:focus {
-  outline: none;
+button:active {
+  background-color: #450882;
 }
